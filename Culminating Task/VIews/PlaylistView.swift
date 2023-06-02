@@ -38,9 +38,11 @@ struct PlaylistView: View {
                 }
             }
             .searchable(text: $searchText)
-            .task {
-                //When the view appears fetch search results
-                foundSongs = await NetworkService.fetch(resultsFor: "As it was")
+            .onChange(of: searchText) { newSearchText in
+                Task {
+                    //Fetch search results for whatever is searched
+                    foundSongs = await NetworkService.fetch(resultsFor: newSearchText)
+                }
             }
         }
         // Show a list of songs that match the current search term
