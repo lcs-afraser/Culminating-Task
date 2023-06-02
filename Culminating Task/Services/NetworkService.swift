@@ -9,6 +9,8 @@ import Foundation
 
 struct NetworkService {
     
+    //MARK: Functions
+    
     // This loads a list of songs that match the provided search term from the endpoint.
     //
     // "async" means it is an asynchronous function.
@@ -17,10 +19,13 @@ struct NetworkService {
     // in our app. Since this function might take a while to complete
     // this ensures that other parts of our app (like the user interface)
     // won't "freeze up" while this function does it's job.
-    static func fetch() async -> [Song] {
+    static func fetch(resultsFor songName: String) async -> [Song] {
+        
+        //Clean up the song name to mathc apple music peramiters
+        let cleanedUpSongName = songName.lowercased().replacingOccurrences(of: " ", with: "+")
         
         // 1. Attempt to create a URL from the address provided
-        let endpoint = "https://itunes.apple.com/search?term=anti-hero&entity=song&limit=20"
+        let endpoint = "https://itunes.apple.com/search?term=\(cleanedUpSongName)&entity=song&limit=20"
         guard let url = URL(string: endpoint) else {
             print("Invalid address for JSON endpoint.")
             return []

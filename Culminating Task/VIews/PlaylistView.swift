@@ -34,8 +34,8 @@ struct PlaylistView: View {
             }
         }
         .task {
-            //When the view appears fetch search results for AntiHero
-            foundSongs = await NetworkService.fetch()
+            //When the view appears fetch search results
+            foundSongs = await NetworkService.fetch(resultsFor: "As it was")
         }
 //        .toolbar {
 //            ToolbarItem(placement: .primaryAction) {
