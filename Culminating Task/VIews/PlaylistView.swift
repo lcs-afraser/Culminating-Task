@@ -38,9 +38,11 @@ struct PlaylistView: View {
             //            }
             //        }
             List(foundSongs, id: \.trackId) { currentSong in
-                
                 VStack(alignment: .leading) {
                     HStack {
+                        
+                        RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
+                        
                         Text(currentSong.trackName)
                             .bold()
                         
@@ -50,6 +52,10 @@ struct PlaylistView: View {
                         .italic()
                     
                     Text(currentSong.artistName)
+                    
+                    AudioPlayerView(urlOfAudioToPlay: currentSong.previewUrl)
+                        .padding(.top, 2)
+                        .padding(.horizontal, 5)
                 }
             }
             .searchable(text: $searchText)

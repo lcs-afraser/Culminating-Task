@@ -11,7 +11,7 @@ import SwiftUI
 struct Culminating_TaskApp: App {
     var body: some Scene {
         WindowGroup {
-            SongDetailView(songToShow: exampleSong)
+           PlaylistView()
         }
     }
 }
