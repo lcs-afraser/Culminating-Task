@@ -22,6 +22,21 @@ struct PlaylistView: View {
         
         
         NavigationView {
+            
+            
+            //        .toolbar {
+            //            ToolbarItem(placement: .primaryAction) {
+            //                Button(action: {
+            //                    showingAddMovieView = true
+            //                }, label: {
+            //                    Image(systemName: "plus")
+            //                })
+            //                .sheet(isPresented: $showingAddMovieView) {
+            //                    AddMovieView()
+            //                        .presentationDetents([.fraction(0.3)])
+            //                }
+            //            }
+            //        }
             List(foundSongs, id: \.trackId) { currentSong in
                 
                 VStack(alignment: .leading) {
@@ -45,22 +60,6 @@ struct PlaylistView: View {
                 }
             }
         }
-        // Show a list of songs that match the current search term
-
-//        .toolbar {
-//            ToolbarItem(placement: .primaryAction) {
-//                Button(action: {
-//                    showingAddMovieView = true
-//                }, label: {
-//                    Image(systemName: "plus")
-//                })
-//                .sheet(isPresented: $showingAddMovieView) {
-//                    AddMovieView()
-//                        .presentationDetents([.fraction(0.3)])
-//                }
-//            }
-//        }
-        
     }
 }
 
