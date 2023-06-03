@@ -15,7 +15,7 @@ struct PlaylistView: View {
     @State var foundSongs: [Song] = []
     
     //Holds the song name that is being searched
-    @State var searchText = ""
+    @State var searchText = "Money City Maniacs"
     
     //MARK: Computed Properties
     var body: some View {
@@ -37,33 +37,48 @@ struct PlaylistView: View {
             //                }
             //            }
             //        }
-            List(foundSongs, id: \.trackId) { currentSong in
-                VStack(alignment: .leading) {
-                    HStack {
-                        
-                        RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
-                        
-                        Text(currentSong.trackName)
-                            .bold()
-                        
-                        Spacer()
+            
+//            List(foundSongs, id: \.trackId) { currentSong in
+//                VStack(alignment: .leading) {
+//                    HStack {
+//
+//                        RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
+//
+//                        Text(currentSong.trackName)
+//                            .bold()
+//
+//                        Spacer()
+//                    }
+//                    Text(currentSong.collectionName)
+//                        .italic()
+//
+//                    Text(currentSong.artistName)
+//
+//                    AudioPlayerView(urlOfAudioToPlay: currentSong.previewUrl)
+//                        .padding(.top, 2)
+//                        .padding(.horizontal, 5)
+//                }
+//            }
+//            .searchable(text: $searchText)
+//            .onChange(of: searchText) { newSearchText in
+//                Task {
+//                    //Fetch search results for whatever is searched
+//                    foundSongs = await NetworkService.fetch(resultsFor: newSearchText)
+//                }
+//            }
+            VStack {
+                Text(searchText)
+                    .onAppear {
+                        Task {
+                            //Fetch search results for whatever is searched
+                            foundSongs = await NetworkService.fetch(resultsFor: searchText)
+                        }
                     }
-                    Text(currentSong.collectionName)
-                        .italic()
-                    
-                    Text(currentSong.artistName)
-                    
-                    AudioPlayerView(urlOfAudioToPlay: currentSong.previewUrl)
-                        .padding(.top, 2)
-                        .padding(.horizontal, 5)
+                
+                ForEach(foundSongs, id: \.trackId) { song in
+                    AudioPlayerView(urlOfAudioToPlay: song.previewUrl)
                 }
-            }
-            .searchable(text: $searchText)
-            .onChange(of: searchText) { newSearchText in
-                Task {
-                    //Fetch search results for whatever is searched
-                    foundSongs = await NetworkService.fetch(resultsFor: newSearchText)
-                }
+                
             }
         }
     }
