@@ -17,6 +17,7 @@
 		6ED998342A2A294A0033263C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED998332A2A294A0033263C /* NetworkService.swift */; };
 		6ED998372A2A2E760033263C /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED998362A2A2E760033263C /* AudioPlayerView.swift */; };
 		6ED998392A2A2E900033263C /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED998382A2A2E900033263C /* RemoteImageView.swift */; };
+		6EF360CB2A2E3C540064E355 /* AddSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF360CA2A2E3C540064E355 /* AddSongView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		6ED998332A2A294A0033263C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		6ED998362A2A2E760033263C /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
 		6ED998382A2A2E900033263C /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		6EF360CA2A2E3C540064E355 /* AddSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				6ED998352A2A2E5F0033263C /* Helpers */,
 				6ED9982B2A2A25650033263C /* PlaylistView.swift */,
+				6EF360CA2A2E3C540064E355 /* AddSongView.swift */,
 				6E485E8E2A2B8D96000D8706 /* SongDetailView.swift */,
 			);
 			path = VIews;
@@ -195,6 +198,7 @@
 				6ED998312A2A27BC0033263C /* SearchResult.swift in Sources */,
 				6ED4CE5B2A2A1DFF00F0C7D9 /* Culminating_TaskApp.swift in Sources */,
 				6ED998392A2A2E900033263C /* RemoteImageView.swift in Sources */,
+				6EF360CB2A2E3C540064E355 /* AddSongView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

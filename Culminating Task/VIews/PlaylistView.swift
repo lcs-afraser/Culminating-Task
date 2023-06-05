@@ -11,106 +11,29 @@ struct PlaylistView: View {
     
     //MARK: Stored Properties
     
-    //Holds the list of songs returned by our search
-    @State var foundSongs: [Song] = []
-    
-    //Holds the song name that is being searched
-    @State var searchText = ""
+    // Is the interface to show a song visable right now
+    @State var showingAddSongView = false
     
     //MARK: Computed Properties
     var body: some View {
         
-        
         NavigationView {
-            
-            
-            //        .toolbar {
-            //            ToolbarItem(placement: .primaryAction) {
-            //                Button(action: {
-            //                    showingAddMovieView = true
-            //                }, label: {
-            //                    Image(systemName: "plus")
-            //                })
-            //                .sheet(isPresented: $showingAddMovieView) {
-            //                    AddMovieView()
-            //                        .presentationDetents([.fraction(0.3)])
-            //                }
-            //            }
-            //        }
-            
-//            List(foundSongs, id: \.trackId) { currentSong in
-//                VStack(alignment: .leading) {
-//                    HStack {
-//
-//                        RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
-//
-//                        Text(currentSong.trackName)
-//                            .bold()
-//
-//                        Spacer()
-//                    }
-//                    Text(currentSong.collectionName)
-//                        .italic()
-//
-//                    Text(currentSong.artistName)
-//
-//                    AudioPlayerView(urlOfAudioToPlay: currentSong.previewUrl)
-//                        .padding(.top, 2)
-//                        .padding(.horizontal, 5)
-//                }
-//            }
-//            .searchable(text: $searchText)
-//            .onChange(of: searchText) { newSearchText in
-//                Task {
-//                    //Fetch search results for whatever is searched
-//                    foundSongs = await NetworkService.fetch(resultsFor: newSearchText)
-//                }
-//            }
-            VStack {
-                
-                TextField("Enter a song name", text: $searchText)
-
-                Button(action: {
-                    Task {
-                        //Fetch search results for whatever is searched
-                        foundSongs = await NetworkService.fetch(resultsFor: searchText)
-                    }
-                }, label: {
-                    Text("Load results")
-                })
-                .buttonStyle(.borderedProminent)
-                
-                ScrollView {
-                    
-                    ForEach(foundSongs, id: \.trackId) { currentSong in
-                        
-                        VStack {
-                            
-                            Divider()
-                            
-                            HStack {
-                                
-                                RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
-                                
-                                Text(currentSong.trackName)
-                                    .bold()
-                                
-                                Spacer()
-                            }
-                            Text(currentSong.collectionName)
-                                .italic()
-                            
-                            Text(currentSong.artistName)
-                            
-                            AudioPlayerView(urlOfAudioToPlay: currentSong.previewUrl)
-                                .padding(.top, 2)
-                                .padding(.horizontal, 5)
-                        }
-                        
+            Text("Playlist view")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button(action: {
+                            showingAddSongView = true
+                        }, label: {
+                            Image(systemName: "plus")
+                        })
                         
                     }
                 }
-            }
+                .sheet(isPresented: $showingAddSongView) {
+                    AddSongView()
+                        .presentationDetents([.fraction(0.3)])
+                }
+                .navigationTitle("Playlist Builder")
         }
     }
 }
