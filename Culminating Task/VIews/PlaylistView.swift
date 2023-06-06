@@ -5,6 +5,7 @@
 //  Created by Alistair Fraser on 2023-06-02.
 //
 
+import Blackbird
 import SwiftUI
 
 struct PlaylistView: View {
@@ -40,5 +41,7 @@ struct PlaylistView: View {
 struct PlaylistView_Previews: PreviewProvider {
     static var previews: some View {
         PlaylistView()
+        // Make the database available to all other views through the environment
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }
