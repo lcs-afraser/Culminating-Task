@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6E47604A2A2FB0FB00AC4192 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 6E4760492A2FB0FB00AC4192 /* Blackbird */; };
 		6E47604C2A2FB13100AC4192 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E47604B2A2FB13100AC4192 /* AppDatabase.swift */; };
+		6E47604E2A2FB9C900AC4192 /* SavedSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E47604D2A2FB9C900AC4192 /* SavedSong.swift */; };
 		6E485E8F2A2B8D96000D8706 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E485E8E2A2B8D96000D8706 /* SongDetailView.swift */; };
 		6E9875EE2A2E43FA0015E914 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875ED2A2E43FA0015E914 /* db.sqlite */; };
 		6ED4CE5B2A2A1DFF00F0C7D9 /* Culminating_TaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED4CE5A2A2A1DFF00F0C7D9 /* Culminating_TaskApp.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		6E47604B2A2FB13100AC4192 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		6E47604D2A2FB9C900AC4192 /* SavedSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSong.swift; sourceTree = "<group>"; };
 		6E485E8E2A2B8D96000D8706 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		6E9875ED2A2E43FA0015E914 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		6ED4CE572A2A1DFF00F0C7D9 /* Culminating Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Culminating Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 			children = (
 				6E9875ED2A2E43FA0015E914 /* db.sqlite */,
 				6ED9982E2A2A260C0033263C /* Song.swift */,
+				6E47604D2A2FB9C900AC4192 /* SavedSong.swift */,
 				6ED998302A2A27BC0033263C /* SearchResult.swift */,
 			);
 			path = Model;
@@ -215,6 +218,7 @@
 				6ED4CE5B2A2A1DFF00F0C7D9 /* Culminating_TaskApp.swift in Sources */,
 				6ED998392A2A2E900033263C /* RemoteImageView.swift in Sources */,
 				6EF360CB2A2E3C540064E355 /* AddSongView.swift in Sources */,
+				6E47604E2A2FB9C900AC4192 /* SavedSong.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

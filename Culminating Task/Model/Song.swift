@@ -5,10 +5,9 @@
 //  Created by Alistair Fraser on 2023-06-02.
 //
 
-import Blackbird
 import Foundation
 
-struct Song: BlackbirdModel {
+struct Song: Codable {
     
     let trackId: Int
     let artistName: String

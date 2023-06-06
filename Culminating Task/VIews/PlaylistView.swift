@@ -12,6 +12,11 @@ struct PlaylistView: View {
     
     //MARK: Stored Properties
     
+    //The list of added songs
+    @BlackbirdLiveModels({ db in
+        try await SavedSong.read(from: db)
+    }) var songs
+    
     // Is the interface to show a song visable right now
     @State var showingAddSongView = false
     
@@ -19,21 +24,23 @@ struct PlaylistView: View {
     var body: some View {
         
         NavigationView {
-            Text("Playlist view")
-                .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        Button(action: {
-                            showingAddSongView = true
-                        }, label: {
-                            Image(systemName: "plus")
-                        })
-                    }
+            List(songs.results) { currentSong in
+                Text(currentSong.trackName)
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        showingAddSongView = true
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
                 }
-                .sheet(isPresented: $showingAddSongView) {
-                    AddSongView()
-                        .presentationDetents([.fraction(0.3)])
-                }
-                .navigationTitle("Playlist Builder")
+            }
+            .sheet(isPresented: $showingAddSongView) {
+                AddSongView()
+                    .presentationDetents([.fraction(0.3)])
+            }
+            .navigationTitle("Playlist Builder")
         }
     }
 }
