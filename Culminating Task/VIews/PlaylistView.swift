@@ -26,8 +26,7 @@ struct PlaylistView: View {
                         }, label: {
                             Image(systemName: "plus")
                         })
-                        
-                
+                    }
                 }
                 .sheet(isPresented: $showingAddSongView) {
                     AddSongView()
