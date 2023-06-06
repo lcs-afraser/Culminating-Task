@@ -25,7 +25,13 @@ struct PlaylistView: View {
         
         NavigationView {
             List(songs.results) { currentSong in
-                Text(currentSong.trackName)
+                HStack{
+                    RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
+                    VStack{
+                        Text(currentSong.trackName)
+                        Text(currentSong.artistName)
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
