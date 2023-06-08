@@ -68,7 +68,8 @@ struct AddSongView: View {
                                 Button(action: {
                                     Task {
                                         //Write to Database
-                                        try await db!.transaction { core in try core.query(" INSERT INTO SavedSong (id, artistName, collectionName, trackName, artistViewUrl, collectionViewUrl, previewUrl, artworkUrl100) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", currentSong.trackId, currentSong.artistName, currentSong.collectionName, currentSong.trackName, currentSong.artistViewUrl, currentSong.collectionViewUrl, currentSong.previewUrl, currentSong.artworkUrl100)
+                                        try await db!.transaction { core in try core.query("INSERT INTO SavedSong (id, artistName, collectionName, trackName, artistViewUrl, collectionViewUrl, previewUrl, artworkUrl100) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", currentSong
+                                            .trackId, currentSong.artistName, currentSong.collectionName, currentSong.trackName, currentSong.artistViewUrl, currentSong.collectionViewUrl, currentSong.previewUrl, currentSong.artworkUrl100)
                                         }
                                     }
                                 }, label: {Text("ADD")

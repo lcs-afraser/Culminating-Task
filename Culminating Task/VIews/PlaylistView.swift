@@ -12,6 +12,10 @@ struct PlaylistView: View {
     
     //MARK: Stored Properties
     
+    
+    //Access the connection to the database (needed to add a new record)
+    @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
+
     //The list of added songs
     @BlackbirdLiveModels({ db in
         try await SavedSong.read(from: db)
@@ -24,14 +28,38 @@ struct PlaylistView: View {
     var body: some View {
         
         NavigationView {
-            List(songs.results) { currentSong in
-                HStack{
-                    RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
-                    VStack{
-                        Text(currentSong.trackName)
-                        Text(currentSong.artistName)
+            List {
+                ForEach(songs.results) { currentSong in
+                    VStack(alignment: .leading) {
+                        
+                        HStack {
+                            
+                            RemoteImageView(urlOfImageToShow: currentSong.artworkUrl100)
+                            
+                            VStack(alignment: .leading) {
+                                
+                                Text(currentSong.trackName)
+                                    .font(.title)
+                                    .bold()
+                                
+                                Text(currentSong.collectionName)
+                                    .font(.title3)
+                                
+                                Text(currentSong.artistName)
+                                    .font(.subheadline)
+                                
+                            }
+                            
+                        }
+                        
+                        AudioPlayerView(urlOfAudioToPlay: currentSong.previewUrl)
+                            .padding(.horizontal, 5)
+                        
+                        
                     }
+                    
                 }
+                .onDelete(perform: removeRows)
             }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
@@ -47,6 +75,27 @@ struct PlaylistView: View {
                     .presentationDetents([.fraction(0.3)])
             }
             .navigationTitle("Playlist Builder")
+        }
+    }
+    
+    //MARK: Functions
+    func removeRows(at offsets: IndexSet) {
+        Task {
+            try await db!.transaction { core in
+                
+                //Get the ID of the item to be deleted
+                var idList = ""
+                for offset in offsets {
+                    idList += "\(songs.results[offset].id),"
+                }
+                //Remove the final comma
+                print(idList)
+                idList.removeLast()
+                print(idList)
+                //Delete the rows from the database
+                try core.query("DELETE FROM SavedSong WHERE id IN (?)", idList)
+                
+            }
         }
     }
 }
